@@ -28,6 +28,7 @@
         html {
             scroll-behavior: smooth;
             scroll-snap-type: y mandatory;
+            scrollbar-width: none; /* Firefox */
         }
 
         body {
@@ -36,28 +37,17 @@
             color: var(--text);
             overflow-x: hidden;
             transition: background-color 600ms ease;
-        }
-
-        /* Hide scrollbars (keep scrolling) */
-        html {
             scrollbar-width: none; /* Firefox */
         }
 
-        body {
-            scrollbar-width: none; /* Firefox */
-        }
-
-        html::-webkit-scrollbar,
-        body::-webkit-scrollbar {
+        html::-webkit-scrollbar {
             width: 0;
             height: 0;
             display: none; /* Chrome/Safari */
         }
 
-        /* wrapper only — use native document scrolling */
+        /* wrapper */
         main {
-            height: auto;
-            overflow: visible;
         }
 
         section {
@@ -212,7 +202,6 @@
         }
 
         .mascot {
-            display: none !important;
             /* 초기에는 화면에서 제거 */
             position: fixed;
             right: 18px;
@@ -225,6 +214,10 @@
             opacity: 0;
             transform: translate(28%, 28%);
             transition: opacity 320ms ease, transform 520ms cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .mascot.isHidden {
+            display: none !important;
         }
 
         .mascot.isVisible {
@@ -281,10 +274,7 @@
         <!-- 각 섹션에 data-bg로 목표 배경색 지정 -->
         <section class="hero" data-bg="#0f0f13" data-mascot="a">
             <h1>Studio GMH</h1>
-            <div class="tagline">High-Agency Play.
-                Moment by Moment.</div>
-            <p>
-            </p>
+            <div class="tagline">High-Agency Play.<br>Moment by Moment.</div>
         </section>
 
         <section data-bg="#0b1220" data-mascot="b">
@@ -326,105 +316,109 @@
 
 
 
-    <div id="mascot" class="mascot" aria-hidden="true">
+    <div id="mascot" class="mascot isHidden" aria-hidden="true">
         <img id="mascotImg" class="mascotImg" alt="" />
     </div>
     <script>
-        // 섹션 등장 애니메이션
-        const sections = document.querySelectorAll("section");
+        (() => {
+            // Sections
+            const sections = document.querySelectorAll("section");
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            for (const e of entries) {
-                if (e.isIntersecting) e.target.classList.add("visible");
-            }
-        }, { threshold: 0.2 });
-
-        sections.forEach(s => revealObserver.observe(s));
-
-        // 배경색 전환: 가장 많이 보이는 섹션의 data-bg를 body에 적용
-        const bgObserver = new IntersectionObserver((entries) => {
-            // intersecting 중에서 가장 큰 intersectionRatio 선택
-            const visible = entries
+            const getMostVisible = (entries) => entries
                 .filter(e => e.isIntersecting)
                 .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-            if (visible) {
+            // Reveal on enter
+            const revealObserver = new IntersectionObserver((entries) => {
+                for (const e of entries) {
+                    if (e.isIntersecting) e.target.classList.add("visible");
+                }
+            }, { threshold: 0.2 });
+
+            sections.forEach(s => revealObserver.observe(s));
+
+            // Mascot
+            const mascotEl = document.getElementById("mascot");
+            const mascotImg = document.getElementById("mascotImg");
+            let currentMascot = null;
+
+            const svgData = (letter) => {
+                const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5a8cff"/>
+      <stop offset="1" stop-color="#c9d6ff"/>
+    </linearGradient>
+  </defs>
+  <path d="M70 70c30-40 150-40 180 10 25 40 10 180-60 200-70 20-170-40-120-210z" fill="url(#g)" opacity="0.95"/>
+  <text x="160" y="205" font-family="system-ui,sans-serif" font-size="140" font-weight="800" text-anchor="middle" fill="#0f0f13">${letter}</text>
+</svg>`;
+                return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+            };
+
+            const MASCOTS = {
+                a: svgData("A"),
+                b: svgData("B"),
+                c: svgData("C"),
+                // 예: a: "/assets/char-a.png", b: "/assets/char-b.png", c: "/assets/char-c.png"
+            };
+
+            const setMascot = (key) => {
+                if (!key) return;
+                if (key === currentMascot) return;
+
+                currentMascot = key;
+
+                // If hidden, just swap src and bail (no animation cost)
+                if (mascotEl.classList.contains("isHidden")) {
+                    mascotImg.src = MASCOTS[key] || MASCOTS.a;
+                    return;
+                }
+
+                mascotEl.classList.remove("isVisible");
+                mascotEl.classList.remove("peek");
+
+                setTimeout(() => {
+                    mascotImg.src = MASCOTS[key] || MASCOTS.a;
+                    mascotEl.classList.add("isVisible");
+                    mascotEl.classList.add("peek");
+                    setTimeout(() => mascotEl.classList.remove("peek"), 600);
+                }, 120);
+            };
+
+            // Background + mascot swapping
+            const bgObserver = new IntersectionObserver((entries) => {
+                const visible = getMostVisible(entries);
+                if (!visible) return;
+
                 const bg = visible.target.getAttribute("data-bg");
                 if (bg) document.body.style.backgroundColor = bg;
 
                 const m = visible.target.getAttribute("data-mascot");
                 setMascot(m);
-            }
-        }, { threshold: [0.25, 0.5, 0.75] });
+            }, { threshold: [0.25, 0.5, 0.75] });
 
-        sections.forEach(s => bgObserver.observe(s));
+            sections.forEach(s => bgObserver.observe(s));
 
-        const EMAIL_CODES = [
-            99, 111, 110, 116, 97, 99, 116, 64,
-            115, 116, 117, 100, 105, 111, 103, 109, 104, 46, 99, 111, 109
-        ];
-        function buildEmail() {
-            return String.fromCharCode(...EMAIL_CODES);
-        }
+            // Email
+            const EMAIL_CODES = [
+                99, 111, 110, 116, 97, 99, 116, 64,
+                115, 116, 117, 100, 105, 111, 103, 109, 104, 46, 99, 111, 109
+            ];
 
+            const buildEmail = () => String.fromCharCode(...EMAIL_CODES);
 
-        const mascotEl = document.getElementById("mascot");
-        const mascotImg = document.getElementById("mascotImg");
-        let currentMascot = null;
+            const mailBtn = document.getElementById("mailBtn");
+            mailBtn?.addEventListener("click", () => {
+                const email = buildEmail();
+                const subject = encodeURIComponent("Business Inquiry - Studio GMH");
+                window.location.href = `mailto:${email}?subject=${subject}`;
+            });
 
-        // 1) 일단 더미 이미지(문자 A/B/C)로 동작시키는 data URI
-        function svgData(letter) {
-            const svg = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
-    <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#5a8cff"/>
-        <stop offset="1" stop-color="#c9d6ff"/>
-      </linearGradient>
-    </defs>
-    <path d="M70 70c30-40 150-40 180 10 25 40 10 180-60 200-70 20-170-40-120-210z"
-          fill="url(#g)" opacity="0.95"/>
-    <text x="160" y="205" font-family="system-ui,sans-serif" font-size="140" font-weight="800"
-          text-anchor="middle" fill="#0f0f13">${letter}</text>
-  </svg>`;
-            return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-        }
-
-        // 2) 나중에 실제 캐릭터 이미지를 쓰려면 여기만 바꾸면 됩니다.
-        const MASCOTS = {
-            a: svgData("A"),
-            b: svgData("B"),
-            c: svgData("C"),
-            // 예: a: "/assets/char-a.png", b: "/assets/char-b.png", c: "/assets/char-c.png"
-        };
-
-        function setMascot(key) {
-            if (!key) return;
-            if (key === currentMascot) return;
-
-            currentMascot = key;
-
-            // 살짝 숨겼다가(슬쩍) 교체
-            mascotEl.classList.remove("isVisible");
-            mascotEl.classList.remove("peek");
-
-            setTimeout(() => {
-                mascotImg.src = MASCOTS[key] || MASCOTS.a;
-                // 보여주기 + peek 애니메이션
-                mascotEl.classList.add("isVisible");
-                mascotEl.classList.add("peek");
-                // 애니메이션 클래스 정리
-                setTimeout(() => mascotEl.classList.remove("peek"), 600);
-            }, 120);
-        }
-
-        document.getElementById("mailBtn").addEventListener("click", () => {
-            const email = buildEmail();
-            const subject = encodeURIComponent("Business Inquiry - Studio GMH");
-            window.location.href = `mailto:${email}?subject=${subject}`;
-        });
-
-        setMascot(document.querySelector("section")?.getAttribute("data-mascot") || "a");
+            // Initial mascot
+            setMascot(document.querySelector("section")?.getAttribute("data-mascot") || "a");
+        })();
     </script>
 
 </body>
