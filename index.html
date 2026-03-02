@@ -27,6 +27,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
         }
 
         body {
@@ -37,14 +38,30 @@
             transition: background-color 600ms ease;
         }
 
-        /* 섹션 단위 스냅 */
+        /* Hide scrollbars (keep scrolling) */
+        html {
+            scrollbar-width: none; /* Firefox */
+        }
+
+        body {
+            scrollbar-width: none; /* Firefox */
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none; /* Chrome/Safari */
+        }
+
+        /* wrapper only — use native document scrolling */
         main {
-            height: 100vh;
-            overflow-y: auto;
-            scroll-snap-type: y mandatory;
+            height: auto;
+            overflow: visible;
         }
 
         section {
+            min-height: 100svh;
             min-height: 100vh;
             padding: 0 24px;
             display: flex;
@@ -315,13 +332,12 @@
     <script>
         // 섹션 등장 애니메이션
         const sections = document.querySelectorAll("section");
-        const main = document.getElementById("scrollRoot");
 
         const revealObserver = new IntersectionObserver((entries) => {
             for (const e of entries) {
                 if (e.isIntersecting) e.target.classList.add("visible");
             }
-        }, { root: main, threshold: 0.2 });
+        }, { threshold: 0.2 });
 
         sections.forEach(s => revealObserver.observe(s));
 
@@ -339,7 +355,7 @@
                 const m = visible.target.getAttribute("data-mascot");
                 setMascot(m);
             }
-        }, { root: main, threshold: [0.25, 0.5, 0.75] });
+        }, { threshold: [0.25, 0.5, 0.75] });
 
         sections.forEach(s => bgObserver.observe(s));
 
