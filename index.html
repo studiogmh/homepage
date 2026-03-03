@@ -28,7 +28,8 @@
         html {
             scroll-behavior: smooth;
             scroll-snap-type: y mandatory;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         body {
@@ -37,17 +38,15 @@
             color: var(--text);
             overflow-x: hidden;
             transition: background-color 600ms ease;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         html::-webkit-scrollbar {
             width: 0;
             height: 0;
-            display: none; /* Chrome/Safari */
-        }
-
-        /* wrapper */
-        main {
+            display: none;
+            /* Chrome/Safari */
         }
 
         section {
@@ -78,13 +77,8 @@
             position: relative;
             justify-content: center;
             padding-top: 0;
-            padding-bottom: 96px; /* space for footer */
-        }
-
-        h1 {
-            font-size: clamp(36px, 6vw, 72px);
-            font-weight: 800;
-            margin-bottom: 12px;
+            padding-bottom: 96px;
+            /* space for footer */
         }
 
         h2 {
@@ -97,32 +91,6 @@
             line-height: 1.6;
             color: var(--muted);
             max-width: 760px;
-        }
-
-        .tagline {
-            font-size: clamp(18px, 3vw, 24px);
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .projects {
-            display: grid;
-            gap: 16px;
-            max-width: 860px;
-        }
-
-        .card {
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(6px);
-            transition: 250ms ease;
-        }
-
-        .card:hover {
-            border-color: rgba(90, 140, 255, 0.8);
-            transform: translateY(-3px);
         }
 
         .contactRow {
@@ -160,17 +128,9 @@
             fill: #fff;
         }
 
-        small {
-            color: rgba(255, 255, 255, 0.55);
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+        .hero {
+            align-items: center;
+            text-align: center;
         }
 
         /* 모바일에서 과도한 스냅이 답답하면 이 줄을 주석 처리해도 됩니다 */
@@ -265,6 +225,20 @@
                 animation: none;
             }
         }
+
+        .heroLogo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .heroLogo img {
+            width: 100%;
+            max-width: 512px;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 
@@ -273,8 +247,11 @@
 
         <!-- 각 섹션에 data-bg로 목표 배경색 지정 -->
         <section class="hero" data-bg="#0f0f13" data-mascot="a">
-            <h1>Studio GMH</h1>
-            <div class="tagline">High-Agency Play.<br>Moment by Moment.</div>
+            <div class="heroLogo">
+                <img src="./assets/logo.svg" alt="Logo">
+            </div>
+            <!-- <h1>Studio GMH</h1> -->
+            <!-- <div class="tagline">High-Agency Play. Moment by Moment.</div> -->
         </section>
 
         <section data-bg="#0b1220" data-mascot="b">
