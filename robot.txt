@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Prevent indexing of potential sensitive files
+Disallow: /.git/
+Disallow: /.env
+
+# Sitemap location
+Sitemap: https://studiogmh.com/sitemap.xml
