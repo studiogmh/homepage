@@ -1,0 +1,428 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>1. 키보드 설정 하기</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <a class="back" href="../index.html">‹ 홈</a>
+      <h1>1. 키보드 설정 하기</h1>
+    </div>
+  </div>
+
+  <main class="container">
+    <p>
+      안드로이드는 시스템 버전/제조사에 따라 메뉴 경로가 조금씩 달라질 수 있습니다.
+    </p>
+    <p class="note">아래는 몇몇의 기기들로 설명한 내용입니다. 사용하시는 기기와 정확히 일치하지 않더라도 비슷한 구성을 참고해주세요.</p>
+
+    <div class="tabs">
+      <!-- controls -->
+      <input type="radio" name="device-tab" id="tab-sam8" checked>
+      <input type="radio" name="device-tab" id="tab-sam51">
+      <input type="radio" name="device-tab" id="tab-sam41">
+      <input type="radio" name="device-tab" id="tab-sam12">
+      <input type="radio" name="device-tab" id="tab-lg10">
+      <input type="radio" name="device-tab" id="tab-lg6">
+
+      <!-- tab buttons -->
+      <div class="tab-bar">
+        <label class="tab-label" for="tab-sam8">
+          삼성 One UI 8.0
+          <small>Galaxy Z Fold4</small>
+        </label>
+        <label class="tab-label" for="tab-sam51">
+          삼성 One UI 5.1.1
+          <small>Galaxy Z Fold2</small>
+        </label>
+        <label class="tab-label" for="tab-sam41">
+          삼성 One UI 4.1.1
+          <small>Galaxy Tab S6</small>
+        </label>
+        <label class="tab-label" for="tab-sam12">
+          삼성 One UI 1.0~2.5
+          <small>Galaxy S8+~S9+</small>
+        </label>
+        <label class="tab-label" for="tab-lg10">
+          LG Android 10~12
+          <small>V40~Q92</small>
+        </label>
+        <label class="tab-label" for="tab-lg6">
+          LG Android 6.0
+          <small>Nexus 5</small>
+        </label>
+      </div>
+
+      <!-- panels -->
+      <div class="tab-panels">
+
+        <!-- 삼성 One UI 8.0 (Galaxy Z Fold4) -->
+        <div class="tab-panel" id="panel-sam8">
+          <div class="device-badge">대상: <b>삼성 One UI 8.0 (Galaxy Z Fold4)</b></div>
+
+          <section class="step">
+            <div class="step-number">STEP 1</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam8-01.webp"
+                alt="설정에서 일반 선택">
+              <div class="caption">설정에서 <b>일반</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 2</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam8-02.webp"
+                alt="일반에서 키보드 선택">
+              <div class="caption">일반에서 <b>키보드</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 3</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam8-03.webp"
+                alt="키보드 토글 및 기본 키보드 선택">
+              <div class="caption">
+                <b>한글 발음 일본어 키보드</b> 토글 선택 후<br>
+                <b>기본 키보드</b> 선택
+              </div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 4</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam8-04.webp"
+                alt="입력 방법 선택에서 키보드 선택">
+              <div class="caption">
+                <b>입력 방법 선택</b>에서<br>
+                <b>한글 발음 일본어 키보드</b> 선택
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 삼성 One UI 5.1.1 (Galaxy Z Fold2) -->
+        <div class="tab-panel" id="panel-sam51">
+          <div class="device-badge">대상: <b>삼성 One UI 5.1.1 (Galaxy Z Fold2)</b></div>
+
+          <section class="step">
+            <div class="step-number">STEP 1</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam51-01.webp"
+                alt="설정에서 일반 선택">
+              <div class="caption">설정에서 <b>일반</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 2</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam51-02.webp"
+                alt="일반에서 기본 키보드 및 추가 키보드 설정 선택">
+              <div class="caption">일반에서 <b>기본 키보드 및 추가 키보드 설정</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 3</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam51-03.webp"
+                alt="키보드 토글 및 기본 키보드 선택">
+              <div class="caption">
+                <b>한글 발음 일본어 키보드</b> 토글 선택 후<br>
+                <b>기본 키보드</b> 선택
+              </div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 4</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam51-04.webp"
+                alt="입력 방법 선택에서 키보드 선택">
+              <div class="caption">
+                <b>입력 방법 선택</b>에서<br>
+                <b>한글 발음 일본어 키보드</b> 선택
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 삼성 One UI 4.1.1 (Galaxy Tab S6) -->
+        <div class="tab-panel" id="panel-sam41">
+          <div class="device-badge">대상: <b>삼성 One UI 4.1.1 (Galaxy Tab S6)</b></div>
+
+          <section class="step">
+            <div class="step-number">STEP 1</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam41-01.webp"
+                alt="설정에서 일반 선택 후 기본 키보드 및 추가 키보드 설정 선택">
+              <div class="caption">설정에서 <b>일반</b> 선택 후 <b>기본 키보드 및 추가 키보드 설정</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 2</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam41-02.webp"
+                alt="키보드 토글 및 기본 키보드 선택">
+              <div class="caption">
+                <b>한글 발음 일본어 키보드</b> 토글 선택 후<br>
+                <b>기본 키보드</b> 선택
+              </div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 3</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam41-03.webp"
+                alt="입력 방법 선택에서 키보드 선택">
+              <div class="caption">
+                <b>입력 방법 선택</b>에서<br>
+                <b>한글 발음 일본어 키보드</b> 선택
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 삼성 One UI 1.0~2.5 (Galaxy S8+~Galaxy S9+) -->
+        <div class="tab-panel" id="panel-sam12">
+          <div class="device-badge">대상: <b>삼성 One UI 1.0~2.5 (Galaxy S8+~Galaxy S9+)</b></div>
+
+          <section class="step">
+            <div class="step-number">STEP 1</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam12-01.webp"
+                alt="설정에서 일반 선택">
+              <div class="caption">설정에서 <b>일반</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 2</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam12-02.webp"
+                alt="일반에서 언어 및 입력 방식 선택">
+              <div class="caption">일반에서 <b>언어 및 입력 방식</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 3</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam12-03.webp"
+                alt="언어 및 입력 방식에서 스크린 키보드 선택">
+              <div class="caption"><b>언어 및 입력 방식</b>에서 <b>스크린 키보드</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 4</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam12-04.webp"
+                alt="스크린 키보드에서 키보드 관리 선택">
+              <div class="caption"><b>스크린 키보드</b>에서 <b>키보드 관리</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 5</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam12-05.webp"
+                alt="키보드 관리에서 키보드 토글 선택 후 뒤로 가기">
+              <div class="caption">
+                <b>키보드 관리</b>에서 <b>한글 발음 일본어 키보드</b> 토글 선택 후<br>
+                <b>뒤로 가기</b>
+              </div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 6</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam12-06.webp"
+                alt="기본 키보드 선택">
+              <div class="caption"><b>기본 키보드</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 7</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-sam12-07.webp"
+                alt="키보드 선택에서 한글 발음 일본어 키보드 선택">
+              <div class="caption"><b>키보드 선택</b>에서 <b>한글 발음 일본어 키보드</b> 선택</div>
+            </div>
+          </section>
+        </div>
+
+        <!-- LG Android 10~12 (V40~Q92) -->
+        <div class="tab-panel" id="panel-lg10">
+          <div class="device-badge">대상: <b>LG Android 10~12 (V40~Q92)</b></div>
+
+          <section class="step">
+            <div class="step-number">STEP 1</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-lg10-01.webp"
+                alt="설정에서 시스템 선택">
+              <div class="caption">설정에서 <b>시스템</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 2</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-lg10-02.webp"
+                alt="시스템에서 언어 및 키보드 선택">
+              <div class="caption">시스템에서 <b>언어 및 키보드</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 3</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-lg10-03.webp"
+                alt="언어 및 키보드에서 키보드 관리 선택">
+              <div class="caption"><b>언어 및 키보드</b>에서 <b>키보드 관리</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 4</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-lg10-04.webp"
+                alt="키보드 관리에서 키보드 토글 선택 후 기본 키보드 선택">
+              <div class="caption">
+                <b>키보드 관리</b>에서 <b>한글 발음 일본어 키보드</b> 토글 선택 후<br>
+                <b>기본 키보드</b> 선택
+              </div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 5</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-lg10-05.webp"
+                alt="기본 키보드에서 한글 발음 일본어 키보드 선택">
+              <div class="caption"><b>기본 키보드</b>에서 <b>한글 발음 일본어 키보드</b> 선택</div>
+            </div>
+          </section>
+        </div>
+
+        <!-- LG Android 6.0 (Nexus 5) -->
+        <div class="tab-panel" id="panel-lg6">
+          <div class="device-badge">대상: <b>LG Android 6.0 (Nexus 5)</b></div>
+
+          <section class="step">
+            <div class="step-number">STEP 1</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-setup-01.webp"
+                alt="설정에서 언어 및 키보드 선택">
+              <div class="caption">설정에서 <b>언어 및 키보드</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 2</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-setup-02.webp"
+                alt="언어 및 키보드에서 현재 키보드 선택">
+              <div class="caption"><b>언어 및 키보드</b>에서 <b>현재 키보드</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 3</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-setup-03.webp"
+                alt="키보드 변경에서 키보드 선택 선택">
+              <div class="caption"><b>키보드 변경</b>에서 <b>키보드 선택</b>을 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 4</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-setup-04.webp"
+                alt="키보드 토글 선택 후 뒤로 가기">
+              <div class="caption">
+                <b>한글 발음 일본어 키보드</b> 토글 선택 후<br>
+                <b>뒤로 가기</b>
+              </div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 5</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-setup-05.webp"
+                alt="다시 현재 키보드 선택">
+              <div class="caption">다시 <b>현재 키보드</b> 선택</div>
+            </div>
+          </section>
+
+          <section class="step">
+            <div class="step-number">STEP 6</div>
+            <div class="card">
+              <img class="img" loading="lazy" decoding="async"
+                src="../assets/img/p1-setup-06.webp"
+                alt="키보드 변경에서 한글 발음 일본어 키보드 선택">
+              <div class="caption"><b>키보드 변경</b>에서 <b>한글 발음 일본어 키보드</b> 선택</div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="hr" />
+
+    <div class="section-title">플레이 스토어 링크</div>
+    <div class="links">
+      <a target="_blank" rel="noopener"
+         href="https://play.google.com/store/apps/details?id=com.studiogmh.kj_keyboard">
+        한글 발음 일본어 키보드 (Google Play)
+      </a>
+    </div>
+
+    <div class="footer">
+      <a href="../pages/2-kana-ko.html">다음: 한글 발음으로 일본어 입력하기 ›</a>
+    </div>
+  </main>
+</body>
+</html>
